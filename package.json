@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "env2": "^2.2.2"
+    "env2": "^2.2.2",
+    "puppeteer": "^1.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

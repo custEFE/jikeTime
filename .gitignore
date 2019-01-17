@@ -1,4 +1,8 @@
 
 /node_modules
 
+/chrome-win
+
 .env
+
+package-lock.json
