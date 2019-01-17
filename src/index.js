@@ -12,5 +12,5 @@ import GetCatalog from './module/getCatalog'
     })
     const Page = await browser.newPage();
     await Login(Page)
-    await GetCatalog(Page)
+    await GetCatalog(Page,browser)
 })()

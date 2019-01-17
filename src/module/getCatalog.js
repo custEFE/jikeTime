@@ -1,13 +1,18 @@
-import {ACCOUNT,DOMAIN,PASSWORD} from './../config/env'
 
-const GetCatalog =  async Page => {
-    Page.on('requestfinished',res=>{
-        console.log(typeof res.url())
+import Crawl from './Crawl'
+const GetCatalog = (Page,browser) => {
+    Page.on('requestfinished',async res=>{
         if (res.url() === `https://time.geekbang.org/serv/v1/my/products/all`){
-            const response = res.response()
-            console.log(response.json())
+            const response = await res.response()
+            const JSON_DATA = await response.json()
+            const curriculums =  JSON_DATA.data[0].list
+            // 列表页的ID /column/132
+            await Crawl(Page,browser,curriculums[0].extra.column_id)
+            // child.send({"message":curriculums[0].extra.column_id});
+            // // curriculums.forEach(v => {
+            // //     console.log(v.extra.column_id)
+            // // });
           }
     })
-    // console.log(Page.url())
 }
 export default GetCatalog

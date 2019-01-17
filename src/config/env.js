@@ -4,5 +4,6 @@ const { env } = process;
 module.exports = {
     ACCOUNT:env.ACCOUNT,
     PASSWORD:env.PASSWORD,
-    DOMAIN:env.DOMAIN
+    USER_DOMAIN:env.USER_DOMAIN,
+    COLUMO_DOMAIN:env.COLUMO_DOMAIN
 }
