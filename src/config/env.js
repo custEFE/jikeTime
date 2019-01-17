@@ -3,5 +3,6 @@ Env2('.env')
 const { env } = process;
 module.exports = {
     ACCOUNT:env.ACCOUNT,
-    PASSWORD:env.PASSWORD
+    PASSWORD:env.PASSWORD,
+    DOMAIN:env.DOMAIN
 }
