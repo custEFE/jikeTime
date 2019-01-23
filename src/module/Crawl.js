@@ -3,16 +3,31 @@ import {writeHTML,screenOutHTML} from './../util/util'
 import {resolve} from 'path'
 import Cheerio from 'cheerio'
 import {replace} from 'lodash'
+const pages = []
+let i=0;
+import axios from 'axios'
 
 const Crawl = async (Page,browser,ID)=>{
     const newPage = await browser.newPage();
     await newPage.goto(`${COLUMO_DOMAIN}/column/${ID}`,{waitUnil:'load '});
+    await newPage.waitFor(1500);
     await newPage.click('.article-item',{options :{
         button :'middle'
     }})
     await newPage.waitForNavigation()
-    await newPage.waitFor(3000); // I'm waiting just for safe side 
-    // 清理数据
+    await newPage.waitFor(3000);
+
+    await getHtml(newPage)
+}
+
+const getHtml = async newPage=>{
+    if (pages.indexOf(newPage.url())===-1){
+        pages.push(newPage.url())
+        i++;
+    }else{
+        newPage.close()
+        return false;
+    }
     const html = await newPage.$eval('html',e=>e.outerHTML)
     const $ = Cheerio.load(html)
     let fileName = $('.article-title').text().replace('|','-')
@@ -21,7 +36,7 @@ const Crawl = async (Page,browser,ID)=>{
     await newPage.click('.btn',{options :{
         button :'middle'
     }})
-
-    // Crawl()
+    await newPage.waitFor(3000);
+    getHtml(newPage)
 }
 export default Crawl
