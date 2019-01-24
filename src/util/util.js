@@ -53,3 +53,15 @@ export const screenOutHTML = (html)=>{
     $('switch-btns').remove()
     return $.html()
 }
+
+export const getCookies = ckObjs =>{
+    let cookie; 
+    return new Promise((resolve,reject)=>{
+        if (ckObjs.length>0){
+            cookie = ckObjs.map(v=>`${v.name}=${v.value}`)
+            resolve(cookie.join(';'))
+        }else{
+            reject(new Error('ckObjs为空'))
+        }
+    })
+}

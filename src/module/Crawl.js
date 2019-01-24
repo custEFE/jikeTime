@@ -21,6 +21,7 @@ const Crawl = async (Page,browser,ID)=>{
 }
 
 const getHtml = async newPage=>{
+    await newPage.waitFor(3000);    
     if (pages.indexOf(newPage.url())===-1){
         pages.push(newPage.url())
         i++;
@@ -33,7 +34,7 @@ const getHtml = async newPage=>{
     let fileName = $('.article-title').text().replace('|','-')
     fileName = fileName.replace(/\s*/g,'')
     await writeHTML(resolve(__dirname,`./../html/${fileName}.html`),screenOutHTML(html))
-    await newPage.click('.btn',{options :{
+    await newPage.click('._36LfGj1s_0',{options :{
         button :'middle'
     }})
     await newPage.waitFor(3000);
