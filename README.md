@@ -7,6 +7,7 @@
 3. npm run dev
 4. 手动修改代码
 ```javascript
+    // src/index.js
     const browser  = await Puppeteer.launch({
         executablePath:resolve(__dirname,'./../chrome-win/chrome.exe'),
         headless :false
@@ -22,6 +23,7 @@
 
 1. npm i --save puppeteer --ignore-scripts
 2. 手动下载chromium，解压到项目的根目录下,[下载地址](https://download-chromium.appspot.com/)
+3. 将`index.js`代码中的`launch[executablePath]`修改为本地地址
 
 ### 爬虫原理
 
