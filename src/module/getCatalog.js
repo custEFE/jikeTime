@@ -70,9 +70,11 @@ const run = data=>{
         if (msg === 'readyStart'){
             childFork.send(data)
         }else if (msg === 'close'){
-            childFork.close()
             console.log('关闭子进程')
         }
+    })
+    childFork.on('exit',msg=>{
+        console.log(msg)
     })
     childFork.send('start')
 }

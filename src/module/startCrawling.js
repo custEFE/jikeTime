@@ -23,7 +23,9 @@ const run = data=>{
         return Rp(options)
     })
     Promise.all(requestFun).then(res=>{
-        console.log(res)
         process.send('close')
+        process.exit(1)
+    }).catch(err=>{
+        process.exit(0)
     })
 }
