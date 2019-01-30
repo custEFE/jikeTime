@@ -22,3 +22,9 @@
 
 1. npm i --save puppeteer --ignore-scripts
 2. 手动下载chromium，解压到项目的根目录下,[下载地址](https://download-chromium.appspot.com/)
+
+### 爬虫原理
+
+首先使用Google的`Puppeteer`模拟用户登陆，获得当前登陆人的信息和Cookies，
+获得Cookies后调用某客时间的接口，将用户当前所有的专栏导出，
+递归性的从专栏列表中向外输出专栏内容。
